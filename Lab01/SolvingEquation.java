@@ -52,8 +52,8 @@ public class SolvingEquation {
         Double c = Double.parseDouble(JOptionPane.showInputDialog("Enter c: "));
         Double delta = b * b - 4 * a * c;
         if (delta > 0) {
-            Double x1 = (-b + delta) / (2 * a);
-            Double x2 = (-b - delta) / (2 * a);
+            Double x1 = (-b + Math.sqrt(delta)) / (2 * a);
+            Double x2 = (-b - Math.sqrt(delta)) / (2 * a);
             JOptionPane.showMessageDialog(null, String.format("x1 = %.3f\nx2 = %.3f", x1, x2), "result", 2);
         } else if (delta < 0) {
             JOptionPane.showMessageDialog(null, "NO Solution", "result", 0);
