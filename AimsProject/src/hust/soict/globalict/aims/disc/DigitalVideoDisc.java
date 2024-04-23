@@ -70,4 +70,22 @@ public class DigitalVideoDisc {
     public void setTitle(String title) {
         this.title = title;
     }
+
+    public String toString() {
+        return "DVD - " + title + " - " + category + " - " + director + " - " + length + " : " + cost + "$";
+    }
+
+    public boolean isMatch(String title) {
+        boolean titleMatch = this.title.toLowerCase().contains(title.toLowerCase());
+        boolean categoryMatch = this.category.toLowerCase().contains(title.toLowerCase());
+        return titleMatch || categoryMatch;
+    }
+
+    public boolean isMatch(float maxCost) {
+        return cost <= maxCost;
+    }
+
+    public boolean isMatch(float minCost, float maxCost) {
+        return cost >= minCost && cost <= maxCost;
+    }
 }
