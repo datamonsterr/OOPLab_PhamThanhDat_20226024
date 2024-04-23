@@ -65,6 +65,42 @@ public class Cart {
             total += itemsOrdered[i].getCost();
         }
         return total;
+    }
 
+    public void print() {
+        System.out.println("***********************CART***********************");
+        System.out.println("Ordered Items:");
+        for (int i = 0; i < qtyOrdered; i++) {
+            System.out.println(itemsOrdered[i].toString());
+        }
+        System.out.println("Total cost: " + totalCost());
+        System.out.println("**************************************************");
+    }
+
+    public void search(String keyword) {
+        System.out.println("Search by keywords results:");
+        for (int i = 0; i < qtyOrdered; i++) {
+            if (itemsOrdered[i].isMatch(keyword)) {
+                System.out.println(itemsOrdered[i].toString());
+            }
+        }
+    }
+
+    public void search(float maxCost) {
+        System.out.println("Search by cost results:");
+        for (int i = 0; i < qtyOrdered; i++) {
+            if (itemsOrdered[i].isMatch(maxCost)) {
+                System.out.println(itemsOrdered[i].toString());
+            }
+        }
+    }
+
+    public void search(float minCost, float maxCost) {
+        System.out.println("Search by cost range results:");
+        for (int i = 0; i < qtyOrdered; i++) {
+            if (itemsOrdered[i].isMatch(minCost, maxCost)) {
+                System.out.println(itemsOrdered[i].toString());
+            }
+        }
     }
 }
