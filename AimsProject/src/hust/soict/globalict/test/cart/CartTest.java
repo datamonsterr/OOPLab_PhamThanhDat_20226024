@@ -21,6 +21,10 @@ public class CartTest {
         search(20.0f);
         System.out.println();
         search("lion");
+
+        // Test equals override
+        DigitalVideoDisc dvd4 = new DigitalVideoDisc("The Lion King", "Animation", "Roger Allers", 87, 19.95f);
+        System.out.println(dvd1.equals(dvd4));
     }
 
     public static void search(String keyword) {

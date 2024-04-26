@@ -52,4 +52,9 @@ public abstract class Media {
     public boolean isMatch(float minCost, float maxCost) {
         return getCost() >= minCost && getCost() <= maxCost;
     }
+
+    public boolean equals(Object obj) {
+        Media media = (Media) obj;
+        return title == media.getTitle();
+    }
 }
