@@ -38,9 +38,14 @@ public class Track implements Playable {
             System.out.println("Track is not in the list");
         }
     }
-    
-    public void play(){
+
+    public void play() {
         System.out.println("Playing track: " + getTitle());
         System.out.println("Track length: " + getLength());
+    }
+
+    public boolean equals(Object obj) {
+        Track track = (Track) obj;
+        return title == track.getTitle() && length == track.getLength();
     }
 }

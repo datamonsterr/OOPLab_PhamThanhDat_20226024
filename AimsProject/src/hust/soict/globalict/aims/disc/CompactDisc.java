@@ -23,21 +23,24 @@ public class CompactDisc extends Disc implements Playable {
     }
 
     public void addTrack(Track track) {
-        if (tracks.contains(track)) {
-            System.out.println("Track is already in the list");
-        } else {
-            tracks.add(track);
-            System.out.println("Track added");
+        for (var item : tracks) {
+            if (item.equals(track)) {
+                System.out.println("Track is already in the list");
+                return;
+            }
         }
+        System.out.println("Track added");
     }
 
     public void removeTrack(Track track) {
-        if (tracks.contains(track)) {
-            tracks.remove(track);
-            System.out.println("Track removed");
-        } else {
-            System.out.println("Track is not in the list");
+        for (var item : tracks) {
+            if (item.equals(track)) {
+                tracks.remove(item);
+                System.out.println("Track removed");
+                return;
+            }
         }
+        System.out.println("Track not found");
     }
 
     public int getLength() {
@@ -47,8 +50,8 @@ public class CompactDisc extends Disc implements Playable {
         }
         return length;
     }
-    
-    public void play(){
+
+    public void play() {
         for (Track track : tracks) {
             track.play();
         }
