@@ -1,43 +1,20 @@
 package hust.soict.globalict.aims.disc;
 
-import hust.soict.globalict.aims.media.Media;
-
-public class DigitalVideoDisc extends Media {
-    private String director;
-    private int length;
-
-    // constructor
+public class DigitalVideoDisc extends Disc {
     public DigitalVideoDisc(String title) {
-        setTitle(title);
+        super(title);
     }
 
     public DigitalVideoDisc(String title, String category, float cost) {
-        setCategory(category);
-        setTitle(title);
-        setCost(cost);
+        super(title, category, cost);
     }
 
     public DigitalVideoDisc(String title, String category, String director, float cost) {
-        setCategory(category);
-        setTitle(title);
-        setCost(cost);
-        this.director = director;
+        super(title, category, director, cost);
     }
 
     public DigitalVideoDisc(String title, String category, String director, int length, float cost) {
-        setCategory(category);
-        setTitle(title);
-        setCost(cost);
-        this.length = length;
-        this.director = director;
-    }
-
-    public String getDirector() {
-        return director;
-    }
-
-    public int getLength() {
-        return length;
+        super(title, category, director, length, cost);
     }
 
     public String toString() {
@@ -47,9 +24,9 @@ public class DigitalVideoDisc extends Media {
                 .append(" - ")
                 .append(getCategory())
                 .append(" - ")
-                .append(director != null ? director : "Unknown")
+                .append(getDirector() != null ? getDirector() : "Unknown")
                 .append(" - ")
-                .append(length != 0 ? length + " min" : "Unknown")
+                .append(getLength() != 0 ? getLength() + " min" : "Unknown")
                 .append(" : ")
                 .append(getCost())
                 .append("$");
