@@ -13,3 +13,10 @@ A: Because the Object o1 and Object o2 is just copies of jungleDVD and cinderell
 Q:After the call of changeTitle(jungleDVD, cinderellaDVD.getTitle()) why is the title of the JungleDVD changed?
 A: Because dvd is the copy of jungleDVD, so it points to the same memory address as jungleDVD (like it's two pointer point to the same object). So when we call dvd.setTitle(),
 the title will be changed.
+
+Q: When overriding the equals() method of the Object class, you will have to cast the Object 
+parameter obj to the type of Object that you are dealing with. For example, in the Media class, 
+you must cast the Object obj to a Media, and then check the equality of the two objects’ attributes 
+as the above requirements (i.e. title for Media; title and length for Track). If the 
+passing object is not an instance of Media, what happens?
+A: If the casted Class do not have the right method (getTitle), Java will throw ClassCastException error
