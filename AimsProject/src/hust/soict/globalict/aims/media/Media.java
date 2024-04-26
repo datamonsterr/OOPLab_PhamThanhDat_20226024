@@ -38,4 +38,18 @@ public abstract class Media {
     public float getCost() {
         return cost;
     }
+
+    public boolean isMatch(String title) {
+        boolean titleMatch = getTitle().toLowerCase().contains(title.toLowerCase());
+        boolean categoryMatch = getCategory().toLowerCase().contains(title.toLowerCase());
+        return titleMatch || categoryMatch;
+    }
+
+    public boolean isMatch(float maxCost) {
+        return getCost() <= maxCost;
+    }
+
+    public boolean isMatch(float minCost, float maxCost) {
+        return getCost() >= minCost && getCost() <= maxCost;
+    }
 }
