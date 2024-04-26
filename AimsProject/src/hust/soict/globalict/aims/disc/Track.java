@@ -2,7 +2,7 @@ package hust.soict.globalict.aims.disc;
 
 import java.util.ArrayList;
 
-public class Track {
+public class Track implements Playable {
     private String title;
     private int length;
     private String artist;
@@ -37,5 +37,10 @@ public class Track {
         } else {
             System.out.println("Track is not in the list");
         }
+    }
+    
+    public void play(){
+        System.out.println("Playing track: " + getTitle());
+        System.out.println("Track length: " + getLength());
     }
 }
