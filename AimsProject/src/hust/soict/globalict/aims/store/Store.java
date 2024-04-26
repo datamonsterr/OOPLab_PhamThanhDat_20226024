@@ -2,24 +2,24 @@ package hust.soict.globalict.aims.store;
 
 import java.util.ArrayList;
 
-import hust.soict.globalict.aims.disc.DigitalVideoDisc;
+import hust.soict.globalict.aims.media.Media;
 
 public class Store {
-    private ArrayList<DigitalVideoDisc> itemsInStore = new ArrayList<DigitalVideoDisc>();
+    private ArrayList<Media> itemsInStore = new ArrayList<>();
 
-    public void addDVD(DigitalVideoDisc dvd) {
-        itemsInStore.add(dvd);
+    public void addMedia(Media media) {
+        itemsInStore.add(media);
     }
 
-    public void removeDVD(DigitalVideoDisc dvd) {
-        itemsInStore.remove(dvd);
+    public void removeDVD(Media media) {
+        itemsInStore.remove(media);
     }
 
     public void viewStore() {
         System.out.println("Items in store:");
         System.out.println("------------------------------------------------------------------");
-        for (DigitalVideoDisc dvd : itemsInStore) {
-            System.out.println(dvd.toString());
+        for (var item : itemsInStore) {
+            System.out.println(item.toString());
         }
         System.out.println("------------------------------------------------------------------");
     }
