@@ -18,9 +18,9 @@ public class Aims {
 
         anOrder.removeDigitalVideoDisc(dvd3);
 
-        System.out.println(String.format("%-5s %-15s %s", dvd1.getId(), dvd1.getTitle(), dvd1.getCost()));
-        System.out.println(String.format("%-5s %-15s %s", dvd2.getId(), dvd2.getTitle(), dvd2.getCost()));
-        System.out.println(String.format("%-5s %-15s %s", dvd3.getId(), dvd3.getTitle(), dvd3.getCost()));
+        System.out.println(String.format("%-5s %-15s %s", dvd1.getID(), dvd1.getTitle(), dvd1.getCost()));
+        System.out.println(String.format("%-5s %-15s %s", dvd2.getID(), dvd2.getTitle(), dvd2.getCost()));
+        System.out.println(String.format("%-5s %-15s %s", dvd3.getID(), dvd3.getTitle(), dvd3.getCost()));
 
         System.out.println(String.format("%-5s %-15s %s", "", "Total", anOrder.totalCost()));
 
