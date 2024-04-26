@@ -14,9 +14,11 @@ public class Aims {
 
         DigitalVideoDisc dvd3 = new DigitalVideoDisc("Aladin", "Animation", 18.99f);
         // anOrder.addDigitalVideoDisc(dvd3);
-        anOrder.addDigitalVideoDisc(new DigitalVideoDisc[] { dvd1, dvd2, dvd3 });
+        anOrder.addMedia(dvd1);
+        anOrder.addMedia(dvd2);
+        anOrder.addMedia(dvd3);
 
-        anOrder.removeDigitalVideoDisc(dvd3);
+        anOrder.removeMedia(dvd3);
 
         System.out.println(String.format("%-5s %-15s %s", dvd1.getID(), dvd1.getTitle(), dvd1.getCost()));
         System.out.println(String.format("%-5s %-15s %s", dvd2.getID(), dvd2.getTitle(), dvd2.getCost()));
