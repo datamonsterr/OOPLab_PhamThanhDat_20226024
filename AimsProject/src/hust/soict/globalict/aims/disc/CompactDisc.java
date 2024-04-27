@@ -6,20 +6,19 @@ public class CompactDisc extends Disc implements Playable {
     private String artist;
     private ArrayList<Track> tracks = new ArrayList<>();
 
-    public CompactDisc(String title) {
-        super(title);
-    }
-
-    public CompactDisc(String title, String category, float cost) {
+    public CompactDisc(String title, String category, String artist, float cost) {
         super(title, category, cost);
+        this.artist = artist;
     }
 
-    public CompactDisc(String title, String category, String director, float cost) {
+    public CompactDisc(String title, String category, String director, String artist, float cost) {
         super(title, category, director, cost);
+        this.artist = artist;
     }
 
-    public CompactDisc(String title, String category, String director, int length, float cost) {
+    public CompactDisc(String title, String category, String director, String artist, int length, float cost) {
         super(title, category, director, length, cost);
+        this.artist = artist;
     }
 
     public void addTrack(Track track) {
@@ -52,8 +51,26 @@ public class CompactDisc extends Disc implements Playable {
     }
 
     public void play() {
+        System.out.println("Playing CD - " + getTitle() + " by " + artist);
         for (Track track : tracks) {
             track.play();
         }
+    }
+
+    public String toString() {
+        StringBuffer str = new StringBuffer();
+        str.append("CD - ")
+                .append(getTitle())
+                .append(" - ")
+                .append(getCategory())
+                .append(" - ")
+                .append(getDirector() != null ? getDirector() : "Unknown")
+                .append(" - ")
+                .append(getLength() != 0 ? getLength() + " min" : "Unknown")
+                .append(artist != null ? " - " + artist : "")
+                .append(" : ")
+                .append(getCost())
+                .append("$");
+        return str.toString();
     }
 }

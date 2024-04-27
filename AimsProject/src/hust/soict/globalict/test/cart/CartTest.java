@@ -1,7 +1,15 @@
 package hust.soict.globalict.test.cart;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.List;
+
 import hust.soict.globalict.aims.cart.Cart;
+import hust.soict.globalict.aims.disc.CompactDisc;
 import hust.soict.globalict.aims.disc.DigitalVideoDisc;
+import hust.soict.globalict.aims.media.Book;
+import hust.soict.globalict.aims.media.Media;
 
 public class CartTest {
     private static Cart cart = new Cart();
@@ -22,9 +30,36 @@ public class CartTest {
         System.out.println();
         search("lion");
 
+        // Test polymorphism
+        System.out.println("----------------------------------");
+        System.out.println("Test polymorphism:");
+        Book book = new Book("Atomic Habits", "Self Help", 19.95f);
+        book.addAuthor("James Clear");
+        CompactDisc cd = new CompactDisc("The Best of Mozart", "Classic", "Mozart", 15.99f);
+
+        List<Media> items = new ArrayList<Media>();
+        items.add(dvd3);
+        items.add(cd);
+        items.add(book);
+
+        for (var item : items) {
+            System.out.println(item.toString());
+        }
+        System.out.println("----------------------------------");
+
         // Test equals override
         DigitalVideoDisc dvd4 = new DigitalVideoDisc("The Lion King", "Animation", "Roger Allers", 87, 19.95f);
         System.out.println(dvd1.equals(dvd4));
+
+        // Test sort
+        System.out.println("----------------------------------");
+        System.out.println("Test sort:");
+        Collections.sort(items, Media.COMPARE_BY_COST_TITLE);
+        for (var item : items) {
+            System.out.println(item.toString());
+        }
+        System.out.println("----------------------------------");
+
     }
 
     public static void search(String keyword) {
