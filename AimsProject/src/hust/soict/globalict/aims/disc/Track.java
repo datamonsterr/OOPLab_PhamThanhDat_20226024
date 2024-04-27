@@ -8,9 +8,10 @@ public class Track implements Playable {
     private String artist;
     private ArrayList<String> tracks = new ArrayList<String>();
 
-    public Track(String title, int length) {
+    public Track(String title, String artist, int length) {
         this.title = title;
         this.length = length;
+        this.artist = artist;
     }
 
     public String getTitle() {
@@ -42,10 +43,15 @@ public class Track implements Playable {
     public void play() {
         System.out.println("Playing track: " + getTitle());
         System.out.println("Track length: " + getLength());
+        System.out.println("Track artist: " + artist);
     }
 
     public boolean equals(Object obj) {
         Track track = (Track) obj;
         return title == track.getTitle() && length == track.getLength();
+    }
+
+    public String toString() {
+        return "Track - " + title + "- " + artist + " - " + length + " min";
     }
 }
