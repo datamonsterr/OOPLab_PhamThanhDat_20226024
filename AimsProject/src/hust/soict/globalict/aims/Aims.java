@@ -1,31 +1,52 @@
 package hust.soict.globalict.aims;
 
-import hust.soict.globalict.aims.cart.Cart;
-import hust.soict.globalict.aims.disc.DigitalVideoDisc;
-
 public class Aims {
     public static void main(String[] args) throws Exception {
-        Cart anOrder = new Cart();
-        DigitalVideoDisc dvd1 = new DigitalVideoDisc("The Lion King", "Animation", "Roger Allers", 87, 19.95f);
-        // anOrder.addDigitalVideoDisc(dvd1);
-
-        DigitalVideoDisc dvd2 = new DigitalVideoDisc("Star Wars", "Science Fiction", "George Lucas", 87, 24.95f);
-        // anOrder.addDigitalVideoDisc(dvd2);
-
-        DigitalVideoDisc dvd3 = new DigitalVideoDisc("Aladin", "Animation", 18.99f);
-        // anOrder.addDigitalVideoDisc(dvd3);
-        anOrder.addMedia(dvd1);
-        anOrder.addMedia(dvd2);
-        anOrder.addMedia(dvd3);
-
-        anOrder.removeMedia(dvd3);
-
-        System.out.println(String.format("%-5s %-15s %s", dvd1.getID(), dvd1.getTitle(), dvd1.getCost()));
-        System.out.println(String.format("%-5s %-15s %s", dvd2.getID(), dvd2.getTitle(), dvd2.getCost()));
-        System.out.println(String.format("%-5s %-15s %s", dvd3.getID(), dvd3.getTitle(), dvd3.getCost()));
-
-        System.out.println(String.format("%-5s %-15s %s", "", "Total", anOrder.totalCost()));
-
     }
 
+    public static void showMenu() {
+        System.out.println("AIMS:");
+        System.out.println("--------------------------------");
+        System.out.println("1. View store");
+        System.out.println("2. Update store");
+        System.out.println("3. See current cart");
+        System.out.println("0. Exit");
+        System.out.println("--------------------------------");
+        System.out.println("Please choose a number: 0-1-2-3");
+    }
+
+    public static void storeMenu() {
+        System.out.println("Options:");
+        System.out.println("------------------------------------------------------------------");
+        System.out.println("1. See a media's details");
+        System.out.println("2. Add a media to the store");
+        System.out.println("3. Play a media");
+        System.out.println("4. See current Cart");
+        System.out.println("0. Exit");
+        System.out.println("------------------------------------------------------------------");
+        System.out.println("Please choose a number: 0-1-2-3-4");
+    }
+
+    public static void cartMenu() {
+        System.out.println("Options:");
+        System.out.println("------------------------------------------------------------------");
+        System.out.println("1. Filter media in cart");
+        System.out.println("2. Sort media in cart");
+        System.out.println("3. Remove media from cart");
+        System.out.println("4. Play a media");
+        System.out.println("5. Place order");
+        System.out.println("0. Back");
+        System.out.println("------------------------------------------------------------------");
+        System.out.println("Please choose a number: 0-1-2-3-4-5");
+    }
+
+    public static void mediaDetailsMenu() {
+        System.out.println("Options:");
+        System.out.println("------------------------------------------------------------------");
+        System.out.println("1. Play");
+        System.out.println("2. Add to cart");
+        System.out.println("0. Back");
+        System.out.println("------------------------------------------------------------------");
+        System.out.println("Please choose a number: 0-1-2");
+    }
 }
