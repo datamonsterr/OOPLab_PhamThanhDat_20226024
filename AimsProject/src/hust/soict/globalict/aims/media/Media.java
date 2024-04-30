@@ -53,6 +53,11 @@ public abstract class Media {
         return cost;
     }
 
+    public boolean isMatchByTitle(String title) {
+        boolean titleMatch = getTitle().toLowerCase().contains(title.toLowerCase());
+        return titleMatch;
+    }
+
     public boolean isMatch(String title) {
         boolean titleMatch = getTitle().toLowerCase().contains(title.toLowerCase());
         boolean categoryMatch = getCategory().toLowerCase().contains(title.toLowerCase());

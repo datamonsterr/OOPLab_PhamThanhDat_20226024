@@ -1,14 +1,17 @@
 package hust.soict.globalict.aims;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Scanner;
 
 import hust.soict.globalict.aims.cart.Cart;
 import hust.soict.globalict.aims.disc.CompactDisc;
 import hust.soict.globalict.aims.disc.DigitalVideoDisc;
+import hust.soict.globalict.aims.disc.Playable;
 import hust.soict.globalict.aims.disc.Track;
 import hust.soict.globalict.aims.media.Book;
+import hust.soict.globalict.aims.media.Media;
 import hust.soict.globalict.aims.store.Store;
 
 public class Aims {
@@ -19,6 +22,7 @@ public class Aims {
     public static void main(String[] args) throws Exception {
         // Initialize store and some media
         DigitalVideoDisc dvd1 = new DigitalVideoDisc("The Lion King", "Animation", "Roger Allers", 87, 19.95f);
+        DigitalVideoDisc dvd2 = new DigitalVideoDisc("Annabelle", "Horror", "Unknown", 108, 29.95f);
         Book book1 = new Book("Atomic Habits", "Self Help", 19.95f);
         book1.addAuthor("James Clear");
         CompactDisc cd1 = new CompactDisc("The Best of Mozart", "Classic", "Mozart", 15.99f);
@@ -26,11 +30,15 @@ public class Aims {
         Track track2 = new Track("Bad Guy", "Billie Eilish", 2);
         cd1.addTrack(track1);
         cd1.addTrack(track2);
-        cd1.play();
 
         store.addMedia(dvd1);
+        store.addMedia(dvd2);
         store.addMedia(cd1);
         store.addMedia(book1);
+
+        cart.addMedia(cd1);
+        cart.addMedia(dvd1);
+        cart.addMedia(dvd2);
 
         // Application loop
         mainMenu: while (true) {
@@ -81,6 +89,74 @@ public class Aims {
                     }
                     break;
                 case 3:
+                    cartMenu: while (true) {
+                        cart.print();
+                        cartMenu();
+                        int choiceCart = scanner.nextInt();
+                        switch (choiceCart) {
+                            case 1:
+                                System.out.println("1. Title          2. Id");
+                                System.out.print("Enter type of filter: ");
+                                int choiceFitlerType = scanner.nextInt();
+                                if (choiceFitlerType == 1) {
+                                    System.out.print("Enter keyword: ");
+                                    scanner.nextLine();
+                                    String keyword = scanner.nextLine();
+                                    cart.filterByTitle(keyword);
+                                } else if (choiceFitlerType == 2) {
+                                    System.out.print("Enter ID: ");
+                                    int mediaID = scanner.nextInt();
+                                    cart.filterByID(mediaID);
+                                } else {
+                                    System.out.println("Invalid choice");
+                                }
+                                break;
+                            case 2:
+                                System.out.println("1. Cost_Title         2. Title_Cost");
+                                System.out.print("Sort by: ");
+                                int sortChoice = scanner.nextInt();
+                                if (sortChoice == 1) {
+                                    Collections.sort(cart.getItemsOrdered(), Media.COMPARE_BY_COST_TITLE);
+                                } else if (sortChoice == 2) {
+                                    Collections.sort(cart.getItemsOrdered(), Media.COMPARE_BY_TITLE_COST);
+                                } else {
+                                    System.out.println("Invalid choice");
+                                }
+                                break;
+                            case 3:
+                                System.out.print("Enter the id of media: ");
+                                int removeMediaID = scanner.nextInt();
+                                for (var item : cart.getItemsOrdered()) {
+                                    if (item.getID() == removeMediaID) {
+                                        cart.removeMedia(item);
+                                    }
+                                }
+                                break;
+                            case 4:
+                                System.out.print("Enter the id of media: ");
+                                int mediaID = scanner.nextInt();
+                                for (var item : cart.getItemsOrdered()) {
+                                    if (item.getID() == mediaID) {
+                                        if (item instanceof Playable) {
+                                            ((Playable) item).play();
+                                        } else {
+                                            System.out.println("This media is not playable!");
+                                        }
+                                    }
+                                }
+                                break;
+                            case 5:
+                                for (var item : cart.getItemsOrdered()) {
+                                    store.removeMedia(item);
+                                }
+                                System.out.println("Order placed");
+                                break;
+                            case 0:
+                                break cartMenu;
+                            default:
+                                break;
+                        }
+                    }
                     break;
                 case 0:
                     System.out.println("Goodbye!");
