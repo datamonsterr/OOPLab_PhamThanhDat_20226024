@@ -11,8 +11,12 @@ public class Store {
         itemsInStore.add(media);
     }
 
-    public void removeDVD(Media media) {
+    public void removeMedia(Media media) {
         itemsInStore.remove(media);
+    }
+
+    public ArrayList<Media> getItemsInStore() {
+        return itemsInStore;
     }
 
     public void viewStore() {
@@ -23,4 +27,5 @@ public class Store {
         }
         System.out.println("------------------------------------------------------------------");
     }
+
 }

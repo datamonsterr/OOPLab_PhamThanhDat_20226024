@@ -16,7 +16,7 @@ public class StoreTest {
         store.addMedia(dvd3);
         store.viewStore();
         System.out.println();
-        store.removeDVD(dvd1);
+        store.removeMedia(dvd1);
         store.viewStore();
     }
 }
