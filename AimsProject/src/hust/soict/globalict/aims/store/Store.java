@@ -11,7 +11,7 @@ public class Store {
         itemsInStore.add(media);
     }
 
-    public void removeDVD(Media media) {
+    public void removeMedia(Media media) {
         itemsInStore.remove(media);
     }
 

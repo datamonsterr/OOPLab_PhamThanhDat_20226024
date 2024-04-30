@@ -1,5 +1,7 @@
 package hust.soict.globalict.aims;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 import hust.soict.globalict.aims.cart.Cart;
@@ -39,16 +41,16 @@ public class Aims {
                     store.viewStore();
                     storeMenu: while (true) {
                         storeMenu();
-                        int choiceStore = scanner.nextInt();
-                        switch (choiceStore) {
+                        int choiceViewStore = scanner.nextInt();
+                        switch (choiceViewStore) {
                             case 1:
-                                choiceViewStore.seeMediaDetails();
+                                ViewStore.seeMediaDetails();
                                 break;
                             case 2:
-                                choiceViewStore.addMediaToStore();
+                                ViewStore.addMediaToStore();
                                 break;
                             case 3:
-                                choiceViewStore.playAMedia();
+                                ViewStore.playAMedia();
                                 break;
                             case 4:
                                 cart.print();
@@ -61,6 +63,22 @@ public class Aims {
                     }
                     break;
                 case 2:
+                    updateMenu: while (true) {
+                        updateStoreMenu();
+                        int choiceUpdateStore = scanner.nextInt();
+                        switch (choiceUpdateStore) {
+                            case 1:
+                                UpdateStore.addMediaToStore();
+                                break;
+                            case 2:
+                                UpdateStore.removeMediaFromStore();
+                                break;
+                            case 0:
+                                break updateMenu;
+                            default:
+                                break;
+                        }
+                    }
                     break;
                 case 3:
                     break;
@@ -75,7 +93,101 @@ public class Aims {
         }
     }
 
-    private class choiceViewStore {
+    private class UpdateStore {
+        public static void addMediaToStore() {
+            scanner.nextLine();
+            System.out.print("1. Book\t2. DVD\t3.CD\n");
+            System.out.print("Enter the type of media: ");
+            int choice = scanner.nextInt();
+            scanner.nextLine();
+            switch (choice) {
+                case 1:
+                    System.out.print("Enter the title of book: ");
+                    String title = scanner.nextLine();
+
+                    System.out.print("Enter the category of book: ");
+                    String category = scanner.nextLine();
+
+                    System.out.print("Enter the cost of book: ");
+                    float cost = scanner.nextFloat();
+                    scanner.nextLine();
+
+                    System.out.print("Enter author(s) of book - separate by comma: ");
+                    String line = scanner.nextLine();
+
+                    ArrayList<String> authors = new ArrayList<>(List.of(line.split(",")));
+
+                    Book book = new Book(title, category, cost, authors);
+                    store.addMedia(book);
+                    break;
+                case 2:
+                    System.out.print("Enter the title of DVD: ");
+                    title = scanner.nextLine();
+
+                    System.out.print("Enter the category of DVD: ");
+                    category = scanner.nextLine();
+
+                    System.out.print("Enter the director of DVD: ");
+                    String director = scanner.nextLine();
+
+                    System.out.print("Enter the length of DVD: ");
+                    int length = scanner.nextInt();
+
+                    System.out.print("Enter the cost of DVD: ");
+                    cost = scanner.nextFloat();
+                    scanner.nextLine();
+
+                    DigitalVideoDisc dvd = new DigitalVideoDisc(title, category, director, length, cost);
+                    store.addMedia(dvd);
+                    break;
+                case 3:
+                    System.out.print("Enter the title of CD: ");
+                    title = scanner.nextLine();
+
+                    System.out.print("Enter the category of CD: ");
+                    category = scanner.nextLine();
+
+                    System.out.print("Enter the artist of CD: ");
+                    String artist = scanner.nextLine();
+
+                    System.out.print("Enter the cost of CD: ");
+                    cost = scanner.nextFloat();
+
+                    CompactDisc cd = new CompactDisc(title, category, artist, cost);
+
+                    System.out.print("Enter the number of tracks: ");
+                    int numTracks = scanner.nextInt();
+                    for (int i = 0; i < numTracks; i++) {
+                        System.out.print("Enter the title of track " + (i + 1) + ": ");
+                        scanner.nextLine();
+                        String trackTitle = scanner.nextLine();
+                        System.out.print("Enter the length of track " + (i + 1) + ": ");
+                        int trackLength = scanner.nextInt();
+                        Track track = new Track(trackTitle, artist, trackLength);
+                        cd.addTrack(track);
+                    }
+                    store.addMedia(cd);
+                    break;
+
+                default:
+                    System.out.println("Invalid choice");
+                    break;
+            }
+        }
+
+        public static void removeMediaFromStore() {
+            System.out.print("Enter the title of media: ");
+            scanner.nextLine();
+            String title = scanner.nextLine();
+            for (var item : store.getItemsInStore()) {
+                if (item.getTitle().toLowerCase().equals(title.toLowerCase())) {
+                    store.removeMedia(item);
+                }
+            }
+        }
+    }
+
+    private class ViewStore {
         public static void seeMediaDetails() {
             System.out.print("Enter the title of media: ");
             scanner.nextLine();
@@ -138,7 +250,6 @@ public class Aims {
                 }
             }
         }
-
     }
 
     public static void showMenu() {
@@ -156,7 +267,7 @@ public class Aims {
         System.out.println("Options:");
         System.out.println("------------------------------------------------------------------");
         System.out.println("1. See a media's details");
-        System.out.println("2. Add a media to the store");
+        System.out.println("2. Add a media to cart");
         System.out.println("3. Play a media");
         System.out.println("4. See current Cart");
         System.out.println("0. Exit");
@@ -182,6 +293,16 @@ public class Aims {
         System.out.println("------------------------------------------------------------------");
         System.out.println("1. Play");
         System.out.println("2. Add to cart");
+        System.out.println("0. Back");
+        System.out.println("------------------------------------------------------------------");
+        System.out.println("Please choose a number: 0-1-2");
+    }
+
+    public static void updateStoreMenu() {
+        System.out.println("Options:");
+        System.out.println("------------------------------------------------------------------");
+        System.out.println("1. Add a media to store");
+        System.out.println("2. Remove a media from store");
         System.out.println("0. Back");
         System.out.println("------------------------------------------------------------------");
         System.out.println("Please choose a number: 0-1-2");
