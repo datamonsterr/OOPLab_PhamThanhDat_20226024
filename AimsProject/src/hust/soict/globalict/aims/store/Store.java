@@ -15,6 +15,10 @@ public class Store {
         itemsInStore.remove(media);
     }
 
+    public ArrayList<Media> getItemsInStore() {
+        return itemsInStore;
+    }
+
     public void viewStore() {
         System.out.println("Items in store:");
         System.out.println("------------------------------------------------------------------");

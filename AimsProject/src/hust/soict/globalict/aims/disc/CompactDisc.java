@@ -28,6 +28,7 @@ public class CompactDisc extends Disc implements Playable {
                 return;
             }
         }
+        tracks.add(track);
         System.out.println("Track added");
     }
 
@@ -51,10 +52,14 @@ public class CompactDisc extends Disc implements Playable {
     }
 
     public void play() {
+        System.out.println("*******************" + getTitle() + "**********************");
         System.out.println("Playing CD - " + getTitle() + " by " + artist);
         for (Track track : tracks) {
             track.play();
+            System.out.println("..................................................");
         }
+        System.out.println("Total length: " + getLength() + " min");
+        System.out.println("**************************************************");
     }
 
     public String toString() {
