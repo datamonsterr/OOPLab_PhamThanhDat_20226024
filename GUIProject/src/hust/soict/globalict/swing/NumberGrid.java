@@ -1,10 +1,7 @@
 package hust.soict.globalict.swing;
 
-import java.awt.BorderLayout;
-import java.awt.Container;
-import java.awt.GridLayout;
-
 import javax.swing.*;
+import java.awt.*;
 
 public class NumberGrid extends JFrame {
     private JButton[] numberBtns = new JButton[10];
