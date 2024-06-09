@@ -1,14 +1,14 @@
 package hust.soict.globalict.aims.cart;
 
-import java.util.ArrayList;
-
 import hust.soict.globalict.aims.media.Media;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 public class Cart {
     public static final int MAX_NUMBERS_ORDER = 20;
-    private ArrayList<Media> itemsOrdered = new ArrayList<>();
+    private ObservableList<Media> itemsOrdered = FXCollections.observableArrayList();
 
-    public ArrayList<Media> getItemsOrdered() {
+    public ObservableList<Media> getItemsOrdered() {
         return itemsOrdered;
     }
 

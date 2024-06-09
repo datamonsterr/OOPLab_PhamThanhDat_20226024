@@ -1,6 +1,8 @@
 package hust.soict.globalict.aims.screen.customer;
 
+import hust.soict.globalict.aims.cart.Cart;
 import hust.soict.globalict.aims.disc.DigitalVideoDisc;
+import hust.soict.globalict.aims.media.Book;
 import hust.soict.globalict.aims.screen.customer.controller.StoreController;
 import hust.soict.globalict.aims.store.Store;
 import javafx.application.Application;
@@ -11,11 +13,14 @@ import javafx.stage.Stage;
 
 public class Customer extends Application {
     private static Store store;
+    private static Cart cart;
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("view/Store.fxml"));
-        loader.setController(new StoreController(store));
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("view/Store.fxml"));
+        loader.setController(new StoreController(store, cart));
+        // loader.setController(new CartController(cart));
         Parent root = loader.load();
 
         primaryStage.setTitle("Store");
@@ -25,8 +30,20 @@ public class Customer extends Application {
 
     public static void main(String[] args) {
         store = new Store();
+        cart = new Cart();
 
         store.addMedia(new DigitalVideoDisc("The Lion King", "Animation", "Roger Allers", 87, 19.95f));
+        store.addMedia(new DigitalVideoDisc("The Lion King", "Animation", "Roger Allers", 87, 19.95f));
+        store.addMedia(new DigitalVideoDisc("The Lion King", "Animation", "Roger Allers", 87, 19.95f));
+        store.addMedia(new DigitalVideoDisc("The Lion King", "Animation", "Roger Allers", 87, 19.95f));
+        store.addMedia(new DigitalVideoDisc("The Lion King", "Animation", "Roger Allers", 87, 19.95f));
+        store.addMedia(new DigitalVideoDisc("The Lion King", "Animation", "Roger Allers", 87, 19.95f));
+        store.addMedia(new DigitalVideoDisc("The Lion King", "Animation", "Roger Allers", 87, 19.95f));
+        store.addMedia(new DigitalVideoDisc("The Lion King", "Animation", "Roger Allers", 87, 19.95f));
+        store.addMedia(new Book("The mocking bird", "Forgot", 0));
+
+        cart.addMedia(new DigitalVideoDisc("The Lion King", "Animation", "Roger Allers", 88, 19.95f));
+        cart.addMedia(new DigitalVideoDisc("The Lion King", "Animation", "Roger Allers", 87, 19.95f));
 
         launch(args);
     }
