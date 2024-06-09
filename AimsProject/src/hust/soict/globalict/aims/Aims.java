@@ -10,6 +10,7 @@ import hust.soict.globalict.aims.disc.CompactDisc;
 import hust.soict.globalict.aims.disc.DigitalVideoDisc;
 import hust.soict.globalict.aims.disc.Playable;
 import hust.soict.globalict.aims.disc.Track;
+import hust.soict.globalict.aims.exceptions.PlayerException;
 import hust.soict.globalict.aims.media.Book;
 import hust.soict.globalict.aims.media.Media;
 import hust.soict.globalict.aims.store.Store;
@@ -277,7 +278,12 @@ public class Aims {
                         switch (choiceDetailsMenu) {
                             case 1:
                                 if (item instanceof DigitalVideoDisc) {
-                                    ((DigitalVideoDisc) item).play();
+                                    try {
+
+                                        ((DigitalVideoDisc) item).play();
+                                    } catch (PlayerException e) {
+                                        System.out.println(e.getMessage());
+                                    }
                                 } else if (item instanceof CompactDisc) {
                                     ((CompactDisc) item).play();
                                 } else {
@@ -317,7 +323,11 @@ public class Aims {
             for (var item : store.getItemsInStore()) {
                 if (item.getTitle().toLowerCase().equals(title.toLowerCase())) {
                     if (item instanceof DigitalVideoDisc) {
-                        ((DigitalVideoDisc) item).play();
+                        try {
+                            ((DigitalVideoDisc) item).play();
+                        } catch (PlayerException e) {
+                            System.out.println(e.getMessage());
+                        }
                     } else if (item instanceof CompactDisc) {
                         ((CompactDisc) item).play();
                     } else {
